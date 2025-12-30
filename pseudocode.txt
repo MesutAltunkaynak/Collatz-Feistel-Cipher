@@ -1,0 +1,26 @@
+ALGORİTMA: Collatz-Feistel Balanced Key Generation
+
+GİRDİ: Seed (Başlangıç Değeri), Round_Count (Tur Sayısı)
+ÇIKTI: Balanced_Ciphertext (Eşit sayıda 0 ve 1 içeren şifreli veri)
+
+BAŞLA
+    1. ANAHTAR ÜRETİMİ (Collatz + Von Neumann):
+       a. Mevcut_Sayi = Seed
+       b. EĞER Mevcut_Sayi çift İSE: Mevcut_Sayi = Mevcut_Sayi / 2, Bit = 0
+       c. DEĞİLSE: Mevcut_Sayi = 3 * Mevcut_Sayi + 1, Bit = 1
+       d. Bitleri çiftler halinde grupla (Pairing)
+       e. EĞER grup "01" İSE: Çıktı = 0
+       f. EĞER grup "10" İSE: Çıktı = 1
+       g. EĞER "00" veya "11" İSE: Atla (Discard)
+       h. Hedeflenen anahtar uzunluğuna ulaşana kadar tekrarla.
+
+    2. ŞİFRELEME (Feistel Network):
+       a. Veriyi Sol (L) ve Sağ (R) olarak ikiye böl.
+       b. 8 Tur Boyunca:
+          i.   Tur_Anahtarı = Collatz_Üretici(Seed + Tur_No)
+          ii.  Yeni_L = R
+          iii. Yeni_R = L XOR (R XOR Tur_Anahtarı)
+          iv.  L = Yeni_L, R = Yeni_R
+       c. L ve R'yi birleştir.
+
+BİTİR
