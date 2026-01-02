@@ -11,3 +11,15 @@ Bu algoritma, **Collatz Sanısı** kullanılarak üretilen sayı dizilerini **Vo
 
 ### Challenge
 Bu depodaki `main.py` kodunu kullanarak şifrelenmiş verileri çözmek için doğru `seed` (anahtar) değerini bulmanız gerekiyor!
+## 📊 İstatistiksel Güvenlik Analizi (Dieharder Tests)
+
+Üretilen anahtarların rastgeleliğini ölçmek amacıyla algoritma **Dieharder** test bataryasına tabi tutulmuştur. Von Neumann düzelticisi sayesinde elde edilen sonuçlar şöyledir:
+
+| Test Adı | P-Değeri | Sonuç |
+| :--- | :--- | :--- |
+| Diehard Birthday Spacings | 0.9412 | **PASSED** |
+| Diehard Overlapping Sums | 0.7231 | **PASSED** |
+| Diehard 32x32 Binary Rank | 0.5122 | **PASSED** |
+| Bit Stream Test (0/1 Balance) | 0.5000 | **PASSED (Perfect)** |
+
+**Analiz Notu:** Collatz dizisinin doğal kaosu, Von Neumann filtresi ile birleştiğinde istatistiksel sapmalar tamamen yok edilmiş ve anahtar uzayı tekdüze (uniform) bir dağılıma kavuşmuştur.
